@@ -1,0 +1,25 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    env_file: .env
+    volumes:
+      - database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  redis:
+    image: redis
+    env_file: .env
+    command: "redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}"
+    ports:
+      - 6379:6379
+  cache:
+    image: memcached
+    ports:
+      - 11211:11211
+    entrypoint:
+      - memcached
+      - -m 64
+volumes:
+  storage:
+  database:

@@ -1,0 +1,15 @@
+[MASTER]
+ignore=CVS, migrations, tests
+load-plugins=pylint_django
+
+[MESSAGES CONTROL]
+disable=duplicate-code,no-member,abstract-method,too-few-public-methods
+[REPORTS]
+evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)
+msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
+
+
+[BASIC]
+# Good variable names which should always be accepted, separated by a comma
+max-line-length=88
+good-names=i,j,k,ex,Run,_,app,application,e,logger,handler500,handler400,default_app_config,id,pk,schema_view
